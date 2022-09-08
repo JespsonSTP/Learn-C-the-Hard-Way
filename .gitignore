@@ -3,7 +3,7 @@
 .ccls-cache
 .repl
 .replit
-repl.nix
+replit.nix
 # Object files
 *.o
 *.ko
