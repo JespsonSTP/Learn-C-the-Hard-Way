@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
-
+.ccls-cache
+.repl
+repl.it
+repl.nix
 # Object files
 *.o
 *.ko
