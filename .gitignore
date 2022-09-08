@@ -2,7 +2,7 @@
 *.d
 .ccls-cache
 .repl
-repl.it
+.replit
 repl.nix
 # Object files
 *.o
