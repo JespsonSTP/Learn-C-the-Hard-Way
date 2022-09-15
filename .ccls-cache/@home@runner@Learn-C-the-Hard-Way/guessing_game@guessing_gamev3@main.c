@@ -3,7 +3,7 @@
 #include "stdlib.h"
 #include "time.h"
 #include "io_func.h"
-
+#newpackage
 int high_scores[3];
 
 //function to add scores
