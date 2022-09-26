@@ -3,19 +3,26 @@
 #include "stdlib.h"
 #include "time.h"
 #include "io_func.h"
-#newpackage
-int high_scores[3];
+
+typedef struct Ranking{
+  char name[99];
+  float score;
+} Ranking;
+
+
+Ranking high_scores[3];
 
 //function to add scores
-void add_score(int score) {
-  //loop though scores to find the first score smaller than the new score
+void add_score(char name[], float score) {
+  //loop though scores to find the first score smaller than the new score 3
   for(int i = 0; i < sizeof(high_scores); i++){
-    if(high_scores[i] < score){
+    if(high_scores[i].score < score){
       //we are going to start at end of the array and get to the index where the new score is greater than the previous score and push it down
-      for(int j = sizeof(high_scores); j > i; j--){
+      for(int j = sizeof(high_scores) - 1; j > i; j--){
         high_scores[i] = high_scores[j -1];
       }
-      high_scores[i] = score;
+      strcpy(high_scores[i].name, name);
+      high_scores[i].score = score;
       break;
     }
   }
@@ -23,18 +30,22 @@ void add_score(int score) {
 }
 
 //function to display scores
-void display_highest_scores() {
-  for(int i = 0; i < sizeof(high_scores); i++){
-    printf("")
-  }
+void display_high_scores(Ranking* high_scores) {
+    puts("High scores:\n");
+
+    Ranking* i = high_scores;
+    int count = 1;
+
+    while(i != NULL) {
+        printf("%d: %s $%.2f\n", count++, i->name, i->score);
+        i = i->next;
+    }
 }
-
-
 
 int main() {
  while(1){
     // print to the terminal similar to printf but include new line at the end
-  puts("what is your name");
+  puts("what is your name, press on ENTER to quit");
 
   /*
   creating an array
@@ -79,6 +90,8 @@ int main() {
   char perct = '%';
 
   printf("your score is %d %c \n", score, perct);
+  add_score(name, score);
+  display_highest_scores();
  
  }
   return 0;
